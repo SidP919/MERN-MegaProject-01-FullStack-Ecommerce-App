@@ -1,0 +1,33 @@
+{
+  "name": "authentication",
+  "version": "1.0.0",
+  "description": "This NodeJS App provides a backend API for user authentication in our full-stack eCommerce application.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "authentication",
+    "nodejs",
+    "express",
+    "mongoose",
+    "dotenv",
+    "bcrypt",
+    "jwtwebtoken",
+    "nodemon"
+  ],
+  "author": "Sidharth Pandey",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
