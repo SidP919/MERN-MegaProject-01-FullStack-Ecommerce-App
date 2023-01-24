@@ -7,9 +7,9 @@ This is the authentication directory of our Full-Stack Ecommerce Application whe
 
 ## **List of contents**
 
-  1. [Tech Stack Used](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/tree/Main/ecommerce-backend/authentication#tech-stack-used)
+  1. [Tech Stack Used](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/tree/Dev/ecommerce-backend/authentication#tech-stack-used)
 
-  1. [Links & resources](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/tree/Main/ecommerce-backend/authentication#links--resources)
+  1. [Links & resources](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/tree/Dev/ecommerce-backend/authentication#links--resources)
 
 ***
 
@@ -45,7 +45,7 @@ This is the authentication directory of our Full-Stack Ecommerce Application whe
 
 **Read and go through below links to understand various concepts/library/packages that we have used so far in this authentication directory:**
 
-- [Click here](https://github.com/Automattic/mongoose/issues/1596#issuecomment-21977096) to know more about ``select: false`` used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/759b64aef16074254a465099dc231c612c710c99/ecommerce-backend/authentication/models/user.schema.js) file.
+- [Click here](https://github.com/Automattic/mongoose/issues/1596#issuecomment-21977096) to know more about ``select: false`` used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/Main/ecommerce-backend/authentication/models/user.schema.js) file.
 
 - [Click here](https://stackoverflow.com/a/24214767) to know more about `match:` property used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/Main/ecommerce-backend/authentication/models/user.schema.js) file.
 
@@ -55,20 +55,20 @@ This is the authentication directory of our Full-Stack Ecommerce Application whe
 
 - [Click here](https://rclayton.silvrback.com/export-enumerations-as-static-mongoose-properties) to know more about ``enum:Object.values(AUTH_ROLES)`` used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/Main/ecommerce-backend/authentication/models/user.schema.js) file.
 
-- [Click here](https://mongoosejs.com/docs/timestamps.html#timestamps) to know more about ``{ timestamps: true }`` used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/759b64aef16074254a465099dc231c612c710c99/ecommerce-backend/authentication/models/user.schema.js) file.
+- [Click here](https://mongoosejs.com/docs/timestamps.html#timestamps) to know more about ``{ timestamps: true }`` used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/Main/ecommerce-backend/authentication/models/user.schema.js) file.
 
 - [Click here](https://mongoosejs.com/docs/middleware.html#pre) to know more about ``userSchema.pre('save'`` used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/Main/ecommerce-backend/authentication/models/user.schema.js) file.\
 Also, read this- [issue with pre-hook & save() during password-update](https://stackoverflow.com/questions/50581825/ismodified-and-pre-save-mongoose-nodejs/69676178#69676178)
 
-- [Click here](https://mongoosejs.com/docs/api/document.html#document_Document-isModified) to know more about ``if(!this.isModified("password"))`` used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/759b64aef16074254a465099dc231c612c710c99/ecommerce-backend/authentication/models/user.schema.js) file.
+- [Click here](https://mongoosejs.com/docs/api/document.html#document_Document-isModified) to know more about ``if(!this.isModified("password"))`` used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/Main/ecommerce-backend/authentication/models/user.schema.js) file.
 
-- [Click here](https://www.npmjs.com/package/bcryptjs#usage---async) to know more about ``bcrypt.hash(this.password, AUTH_CONFIG.AUTH_ENCRYPT_PWD_SALT);`` **and** ``bcrypt.compare(enteredPwd, this.password);`` used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/759b64aef16074254a465099dc231c612c710c99/ecommerce-backend/authentication/models/user.schema.js) file.
+- [Click here](https://www.npmjs.com/package/bcryptjs#usage---async) to know more about ``bcrypt.hash(this.password, AUTH_CONFIG.AUTH_ENCRYPT_PWD_SALT);`` **and** ``bcrypt.compare(enteredPwd, this.password);`` used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/Main/ecommerce-backend/authentication/models/user.schema.js) file.
 
-- [Click here](https://www.npmjs.com/package/jsonwebtoken) to know more about ``JWT.sign`` method used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/759b64aef16074254a465099dc231c612c710c99/ecommerce-backend/authentication/models/user.schema.js) file.
+- [Click here](https://www.npmjs.com/package/jsonwebtoken) to know more about ``JWT.sign`` method used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/Main/ecommerce-backend/authentication/models/user.schema.js) file.
 
-- [Click here](https://stackoverflow.com/a/25292026) to know more about ``crypto.randomBytes(32).toString('hex');`` used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/759b64aef16074254a465099dc231c612c710c99/ecommerce-backend/authentication/models/user.schema.js) file.
+- [Click here](https://stackoverflow.com/a/25292026) to know more about ``crypto.randomBytes(32).toString('hex');`` used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/Dev/ecommerce-backend/authentication/models/user.schema.js) file.
 
-- [Click here](https://stackoverflow.com/a/9408217) to know more about ``crypto.createHash("sha256").update(forgotToken).digest('hex');`` used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/759b64aef16074254a465099dc231c612c710c99/ecommerce-backend/authentication/models/user.schema.js) file.
+- [Click here](https://stackoverflow.com/a/9408217) to know more about ``crypto.createHash("sha256").update(forgotToken).digest('hex');`` used in [this](https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/blob/Dev/ecommerce-backend/authentication/models/user.schema.js) file.
 
 ***
 
@@ -83,6 +83,5 @@ Developed By:
 **Sidharth Pandey**
 
 [![Email](https://img.shields.io/badge/Email-6EC72D)](mailto:Sidp0008@gmail.com) [![LinkedIn](https://img.shields.io/badge/LinkedIn-1B98F5)](https://linkedin.com/in/sidp919)
-
 
 **Happy Learning!** ☺️
