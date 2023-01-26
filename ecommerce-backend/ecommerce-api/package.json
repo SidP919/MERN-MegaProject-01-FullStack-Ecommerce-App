@@ -1,0 +1,37 @@
+{
+  "name": "ecommerce-api",
+  "version": "1.0.0",
+  "description": "This NodeJS App provides backend API for ecommerce-specific functions in our Full-Stack Ecommerce Application.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App.git"
+  },
+  "keywords": [
+    "ecommerce",
+    "nodejs",
+    "express",
+    "mongoose",
+    "dotenv",
+    "nodemon",
+    "MongoDB",
+    "backend-api"
+  ],
+  "author": "Sidharth Pandey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App/issues"
+  },
+  "homepage": "https://github.com/SidP919/MERN-MegaProject-01-FullStack-Ecommerce-App#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0",
+    "nodemon": "^2.0.20"
+  }
+}
