@@ -12,6 +12,7 @@ const couponSchema = mongoose.Schema(
         },
         discount:{
             type:Number,
+            max:[COUPON_SCHEMA_UTILS.DISCOUNT_MAX_LIMIT, `Coupon discount percentage cannot be more than ${COUPON_SCHEMA_UTILS.DISCOUNT_MAX_LIMIT} percent!`],
             default:1,
         },
         validity:{
