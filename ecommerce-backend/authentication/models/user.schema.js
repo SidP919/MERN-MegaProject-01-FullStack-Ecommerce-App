@@ -4,6 +4,7 @@ import AUTH_ROLES from '../utils/auth.roles.consts'
 const bcrypt = require('bcryptjs');
 const AUTH_CONFIG = require('./../config/auth.config');
 const JWT = require('jsonwebtoken');
+const crypto = require('crypto');
 
 const userSchema = mongoose.Schema(
     {
@@ -16,7 +17,7 @@ const userSchema = mongoose.Schema(
             unique:[true, "User with same username already exists."],
             maxLength:[USER_SCHEMA_CONSTS.USERNAME_MAX_LENGTH,`Username cannot be more than ${USER_SCHEMA_CONSTS.USERNAME_MAX_LENGTH} characters long!`],
             minLength:[USER_SCHEMA_CONSTS.USERNAME_MIN_LENGTH,`Username cannot be less than ${USER_SCHEMA_CONSTS.USERNAME_MIN_LENGTH} characters long!`],
-            match:[USER_SCHEMA_CONSTS.USERNAME_MATCH_REGEXP,"Given Username is invalid!"]
+            match:[USER_SCHEMA_CONSTS.USERNAME_MATCH_REGEXP(),"Given Username is invalid!"]
         },
         email:{
             type: String,
@@ -57,9 +58,11 @@ userSchema.pre('save',  // "pre" hook will always execute its callback function 
 // We can add methods to our userSchema that 
 // user model object can access like any other mongoose/mongoDB methods:
 userSchema.methods = {
+    
     comparePassword: async function(enteredPwd){
         return await bcrypt.compare(enteredPwd, this.password); // compares entered pwd from client-side and encrypted pwd in DB.
     },
+
     getJwtToken: function(){
         return JWT.sign(    // generates a unique JWT Auth Token
             {
@@ -72,6 +75,17 @@ userSchema.methods = {
             }
         )
     },
+
+    // generates & assigns a secret token to forgotPasswordToken and a time to forgotPasswordExpiryTime
+    getForgotPasswordToken: function(){
+        const forgotToken = crypto.randomBytes(32).toString('hex');
+
+        this.forgotPasswordToken = crypto.createHash("sha256").update(forgotToken).digest('hex');
+        this.forgotPasswordExpiryTime = Date.now() + (20 * 60 * 1000);
+
+        return forgotToken;
+    }
+    
 }
 
 module.exports = mongoose.model("user",userSchema);
