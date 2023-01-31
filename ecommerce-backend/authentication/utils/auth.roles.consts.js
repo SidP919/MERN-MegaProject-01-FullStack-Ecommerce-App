@@ -4,4 +4,4 @@ const AUTH_ROLES = Object.freeze({
     USER: "USER",
 })
 
-export default AUTH_ROLES;
+module.exports = AUTH_ROLES;

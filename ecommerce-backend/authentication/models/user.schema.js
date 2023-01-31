@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-import USER_SCHEMA_CONSTS from './../utils/user.schema.consts'
-import AUTH_ROLES from '../utils/auth.roles.consts'
+const USER_SCHEMA_CONSTS = require('./../utils/user.schema.consts');
+const AUTH_ROLES = require('../utils/auth.roles.consts');
 const bcrypt = require('bcryptjs');
 const AUTH_CONFIG = require('./../config/auth.config');
 const JWT = require('jsonwebtoken');
@@ -10,7 +10,9 @@ const userSchema = mongoose.Schema(
     {
         fullname:{
             type: String,
-            maxLength:[USER_SCHEMA_CONSTS.FULLNAME_MAX_LENGTH,`Name cannot be more than ${USER_SCHEMA_CONSTS.FULLNAME_MAX_LENGTH} characters long!`]
+            maxLength:[USER_SCHEMA_CONSTS.FULLNAME_MAX_LENGTH,`Name cannot be more than ${USER_SCHEMA_CONSTS.FULLNAME_MAX_LENGTH} characters long!`],
+            minLength:[USER_SCHEMA_CONSTS.FULLNAME_MIN_LENGTH,`Name cannot be less than ${USER_SCHEMA_CONSTS.FULLNAME_MIN_LENGTH} characters long!`],
+            required:[true,"Name cannot be empty!"],
         },
         username:{
             type: String,
@@ -49,8 +51,8 @@ const userSchema = mongoose.Schema(
 userSchema.pre('save',  // "pre" hook will always execute its callback function before "save" function is executed.
     async function(next){
         if(!this.isModified("password")) // isModified() returns true if password is being modified in current transaction, else returns false.
-            return next(); 
-        this.password = bcrypt.hash(this.password, AUTH_CONFIG.AUTH_ENCRYPT_PWD_SALT);
+            return next();
+        this.password = await bcrypt.hash(this.password, Number(AUTH_CONFIG.AUTH_ENCRYPT_PWD_SALT));
         next();
     }
 )
