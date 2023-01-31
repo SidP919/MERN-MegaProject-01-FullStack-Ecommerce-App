@@ -125,4 +125,23 @@ const login = asyncHandler(async (req,res) => {
 
 })
 
-module.exports = {signUp, login};
+/*************************************************************************************
+ * @LOGOUT
+ * @route http://localhost:4001/api/v1/auth/logout
+ * @requestType POST
+ * @description User LogOut Controller for logging out an existing/registered user
+ * @parameters none
+ * @returns JSON object( containing response result and message)
+ **************************************************************************************/
+const logOut = asyncHandler(async (_req,res) => {
+    res.cookie("token",null,{
+        expires: new Date(),
+        httpOnly:true
+    })
+    res.status(200).json({
+        success:true,
+        message:"User logged out successfully."
+    })
+})
+
+module.exports = {signUp, login, logOut};
