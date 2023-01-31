@@ -19,7 +19,7 @@ app.use(
                 else
                     return; // don't skip anything (log everything)
             },
-            immediate:true,
+            // immediate:true, // logs when request is received instead of when response is sent to client. This means that a requests will be logged even if the server crashes, but data from the response (like response code, content length, etc.) will not be logged.
         }
     )
 )
