@@ -1,6 +1,7 @@
 const USER_SCHEMA_CONSTS = Object.freeze({
 
     FULLNAME_MAX_LENGTH:35,
+    FULLNAME_MIN_LENGTH:4,
     USERNAME_MAX_LENGTH:26,
     USERNAME_MIN_LENGTH:8,
     USERNAME_MATCH_REGEXP: function(){
@@ -11,4 +12,4 @@ const USER_SCHEMA_CONSTS = Object.freeze({
     
 })
 
-export default USER_SCHEMA_CONSTS;
+module.exports = USER_SCHEMA_CONSTS;
