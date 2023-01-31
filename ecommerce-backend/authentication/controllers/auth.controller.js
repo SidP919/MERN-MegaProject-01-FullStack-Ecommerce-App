@@ -18,7 +18,6 @@ const signUp = asyncHandler(async(req,res)=>{
     let {username} = req.body;
     // Check if all required info was sent in signup request or not
     if(!(fullname && email && password)){ //omitted username from this check since username is not a mandatory field
-        console.log("User Info: ",fullname,email,password,username)
         throw new CustomError("Mandatory fields cannot be empty! Please fill them & try again.", 400);
     }
 
@@ -73,4 +72,57 @@ const signUp = asyncHandler(async(req,res)=>{
     })
 })
 
-module.exports = {signUp};
+/*************************************************************************************
+ * @LOGIN
+ * @route http://localhost:4001/api/v1/auth/login
+ * @requestType POST
+ * @description User Login Controller for logging an existing/registered user
+ * @parameters username/email and password
+ * @returns JSON object( containing response message, logged in User object and token)
+ **************************************************************************************/
+const login = asyncHandler(async (req,res) => {
+    
+    // Destructuring the required info from login request's body object
+    const {username, email, password} = req.body;
+
+    // Check if all required info was sent in login request or not
+    if(!((username || email) && password)){
+        throw new CustomError("Mandatory fields cannot be empty! Please fill them & try again.", 400);
+    }
+
+    // Get user info from DB including password and compare it with user provided password
+    const user = await User.findOne(
+        {
+            $or:[{email},{username}]
+        })
+        .select("+password")
+        .catch((error)=>{
+            console.log(error);
+            throw new CustomError(error.message, error.code)
+        });
+    if(!user){
+        throw new CustomError("Email/Username or/and Password entered is/are incorrect! Please try again.", 400)
+    }
+    const isPwdCorrect = await user.comparePassword(password);
+    user.password = undefined;
+
+    // if password is correct:
+    if(isPwdCorrect){
+        // generate token:
+        const token = user.getJwtToken();
+        // set token in cookies:
+        res.cookie("token", token, cookieOptions);
+        // send response:
+        res.status(200).json({
+            success:true,
+            message:"User logged in successfully.",
+            token,
+            user
+        })
+    }else{ // if password is incorrect:
+        throw new CustomError("Email/Username or/and Password entered is/are incorrect! Please try again.", 400)
+    }
+
+})
+
+module.exports = {signUp, login};
